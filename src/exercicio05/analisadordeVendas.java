@@ -33,7 +33,6 @@ public class analisadordeVendas {
             }
         }
 
-
         media = totalVendido / totalVenda;
 
         System.out.println("\ntotal Vendido: " + totalVendido +
