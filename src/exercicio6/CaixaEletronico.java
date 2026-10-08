@@ -6,14 +6,18 @@ public class CaixaEletronico {
     static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int saldo = 1000;
+        double saldo = 1000;
         double depositar = 0;
         double sacar = 0;
 
         int opcoes = 0;
 
         while (opcoes <= 3){
-            System.out.println("Escolha uma opção: ");
+            System.out.println("\nEscolha uma opção: \n"
+                    + "1 - Consultar saldo\n" +
+                    "2 - Depositar\n" +
+                    "3 - Sacar\n" +
+                    "4 - Sair");
 
             opcoes = scanner.nextInt();
 
@@ -23,25 +27,33 @@ public class CaixaEletronico {
                     break;
 
                 case 2:
-                    System.out.println("Depositar: ");
+                    System.out.println("Informe o valor do deposito: ");
                     depositar = scanner.nextDouble();
 
-                    depositar = depositar + saldo;
+                    saldo = saldo + depositar;
                     break;
 
                 case 3:
-                    System.out.println("Sacar");
+                    System.out.println("Informe o valor do saque: ");
                     sacar = scanner.nextDouble();
 
-                    sacar = saldo - sacar  ;
+                    if (sacar <= saldo){
+                        saldo = saldo - sacar;
+                        System.out.println("Saque no valor de R$ "+ sacar +" realizado");
+                    }else {
+                        System.out.println("Saldo insuficiente!");
+                    }
                     break;
 
                 case 4:
                     System.out.println("Sair");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida!");
+
             }
-
-        }
-
         }
     }
+}
 
