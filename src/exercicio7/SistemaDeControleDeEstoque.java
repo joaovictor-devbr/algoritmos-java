@@ -9,11 +9,12 @@ public class SistemaDeControleDeEstoque {
         int estoque = 50;
         int entrada = 0;
         int saida = 0;
-        int verificar = 0;
 
         int opcoes = 0;
 
-        while (opcoes <= 4){
+        boolean executando = true;
+
+        while (executando){
 
             System.out.println("\n1 - Consultar estoque" +
                     "\n2 - Entrada de produtos" +
@@ -32,14 +33,18 @@ public class SistemaDeControleDeEstoque {
                 case 2:
                     System.out.println("Entrada de produtos: ");
                     entrada = scanner.nextInt();
-
-                    estoque = estoque + entrada;
+                    if (entrada > 0){
+                        estoque = estoque + entrada;
+                        System.out.println("Entrada confirmada com sucesso!");
+                    }else {
+                        System.out.println("Quantidade é inválida");
+                    }
                     break;
 
                 case 3:
                     System.out.println("Saida de produtos: ");
                     saida = scanner.nextInt();
-                    if (saida <= estoque){
+                    if (saida > 0 && saida <= estoque){
                         estoque = estoque - saida;
                         System.out.println("Saída confirmada com sucesso!");
                     }else {
@@ -61,6 +66,7 @@ public class SistemaDeControleDeEstoque {
 
                 case 5:
                     System.out.println("Sair");
+                    executando = false;
                     break;
 
                 default:
