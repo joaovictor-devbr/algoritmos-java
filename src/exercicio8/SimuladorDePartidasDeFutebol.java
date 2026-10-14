@@ -6,7 +6,7 @@ public class SimuladorDePartidasDeFutebol {
     static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int [] gols = new int[2];
+        int[] gols = new int[2];
 
         int vitorias = 0;
         int empates = 0;
@@ -21,16 +21,16 @@ public class SimuladorDePartidasDeFutebol {
 
         boolean executando = true;
 
-        while (executando){
-            System.out.println("\n===== SIMULADOR DE PARTIDAS ====="+
-           "\n1 - Registrar partida"+
-            "\n2 - Ver estatísticas"+
-            "\n3 - Ver histórico de partidas"+
-            "\n0 - Sair");
+        while (executando) {
+            System.out.println("\n===== SIMULADOR DE PARTIDAS =====" +
+                    "\n1 - Registrar partida" +
+                    "\n2 - Ver estatísticas" +
+                    "\n3 - Ver histórico de partidas" +
+                    "\n0 - Sair");
 
             opcoes = scanner.nextInt();
 
-            switch (opcoes){
+            switch (opcoes) {
                 case 1:
                     System.out.println("1 - Registrar partida");
 
@@ -40,37 +40,78 @@ public class SimuladorDePartidasDeFutebol {
                     System.out.println("Quantidade de gols do segundo time: ");
                     gols[1] = scanner.nextInt();
 
-                    if (gols[0] < 0 || gols[1] < 0){
-                        System.out.println("Valores incorretos!!!\n"+
+                    if (gols[0] < 0 || gols[1] < 0) {
+                        System.out.println("Valores incorretos!!!\n" +
                                 "Números negativos não são aceitos");
                     } else {
-                        System.out.println("Placar da partida: " + gols[0] + " x " + gols[1] );
+                        System.out.println("Placar da partida: "
+                                + gols[0] + " x " + gols[1]);
 
                         totalGols1 = totalGols1 + gols[0];
                         totalGols2 = totalGols2 + gols[1];
                         golsDaPartida = gols[0] + gols[1];
                         partidasRegistradas++;
 
-                        System.out.println("Total de partidas: " + partidasRegistradas +
-                                " partidas");
-
+                        System.out.println("Total de partidas: "
+                                + partidasRegistradas + " partidas");
 
                         if (gols[0] > gols[1]) {
-                        System.out.println("Quantidade de gols do jogo: " + golsDaPartida +
-                                "\nVitória do primeiro time!" );
-                        vitorias++;
-                    } else if (gols[0] < gols[1]){
-                           System.out.println("Quantidade de gols do jogo: " + golsDaPartida +
-                            "\nDerrota do primeiro time e Vitória do segundo time");
-                           derrotas++;
-                       }else{
+                            System.out.println("Quantidade de gols do jogo: "
+                                    + golsDaPartida +
+                                    "\nVitória do primeiro time!");
+                            vitorias++;
+
+                        } else if (gols[0] < gols[1]) {
+                            System.out.println("Quantidade de gols do jogo: "
+                                    + golsDaPartida +
+                                    "\nDerrota do primeiro time e vitória do segundo time");
+                            derrotas++;
+
+                        } else {
                             System.out.println("Empate!!!");
                             empates++;
                         }
-
                     }
-                }
+                    break;
+
+                case 2:
+                    System.out.println("2 - Ver estatísticas");
+                    System.out.println("\nTotal de partidas registradas: "
+                            + partidasRegistradas);
+                    System.out.println("Quantidade de vitórias do primeiro time: "
+                            + vitorias);
+                    System.out.println("Quantidade de empates: " + empates);
+                    System.out.println("Quantidade de derrotas do primeiro time: "
+                            + derrotas);
+                    System.out.println("Total de gols marcados pelo primeiro time: "
+                            + totalGols1);
+                    System.out.println("Total de gols sofridos pelo primeiro time: "
+                            + totalGols2);
+                    System.out.println("Saldo de gols: "
+                            + (totalGols1 - totalGols2));
+
+                    if (partidasRegistradas > 0) {
+                        System.out.println("Aproveitamento do time: " +
+                                ((((vitorias * 3) + empates) /
+                                        (partidasRegistradas * 3)) * 100.0) + "%");
+                    } else {
+                        System.out.println("Ainda não há partidas registradas " +
+                                "para calcular o aproveitamento.");
+                    }
+                    break;
+
+                case 3:
+                    // Implementaremos o histórico depois.
+                    break;
+
+                case 0:
+                    // Implementaremos a saída do programa depois.
+                    break;
+
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+                    break;
             }
         }
+    }
 }
-
