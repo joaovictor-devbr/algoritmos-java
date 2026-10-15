@@ -7,6 +7,8 @@ public class SimuladorDePartidasDeFutebol {
         Scanner scanner = new Scanner(System.in);
 
         int[] gols = new int[2];
+        int[] golsTime1 = new int[100];
+        int[] golsTime2 = new int[100];
 
         int vitorias = 0;
         int empates = 0;
@@ -51,6 +53,8 @@ public class SimuladorDePartidasDeFutebol {
                         totalGols2 = totalGols2 + gols[1];
                         golsDaPartida = gols[0] + gols[1];
                         partidasRegistradas++;
+                        golsTime1[partidasRegistradas - 1] = gols[0];
+                        golsTime2[partidasRegistradas - 1] = gols[1];
 
                         System.out.println("Total de partidas: "
                                 + partidasRegistradas + " partidas");
@@ -91,9 +95,9 @@ public class SimuladorDePartidasDeFutebol {
                             + (totalGols1 - totalGols2));
 
                     if (partidasRegistradas > 0) {
-                        System.out.println("Aproveitamento do time: " +
-                                ((((vitorias * 3) + empates) /
-                                        (partidasRegistradas * 3)) * 100.0) + "%");
+                        System.out.printf("Aproveitamento do time: %.2f%%%n",
+                                (((double)(vitorias * 3) + empates) /
+                                        (partidasRegistradas * 3)) * 100);
                     } else {
                         System.out.println("Ainda não há partidas registradas " +
                                 "para calcular o aproveitamento.");
@@ -101,11 +105,22 @@ public class SimuladorDePartidasDeFutebol {
                     break;
 
                 case 3:
-                    // Implementaremos o histórico depois.
+                    System.out.println("3 - Histórico de partidas");
+
+                    if (partidasRegistradas == 0){
+                        System.out.println("Nenhuma partida registrada.");
+                    } else {
+                        for (int i = 0; i < partidasRegistradas; i++){
+                            System.out.println("Partida " + (i + 1) + ": "
+                                    + golsTime1[i] + " x " + golsTime2[i]);
+                        }
+                    }
                     break;
 
                 case 0:
-                    // Implementaremos a saída do programa depois.
+                   System.out.println("0 - Sair");
+
+                   executando = false;
                     break;
 
                 default:
