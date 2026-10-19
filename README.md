@@ -19,7 +19,7 @@ Fortalecer minha base de programação por meio da resolução de exercícios pr
 * Algoritmos
 * Estruturas de dados
 
-## Exercícios
+## Exercícios 
 
 | Exercício             | Conceitos                                                            |
 | --------------------- | -------------------------------------------------------------------- |
