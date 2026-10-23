@@ -6,6 +6,23 @@ public class SimuladorDeInvestimentosEjurosCompostos {
     static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        double[] saldos = {1500.50, 800.00, 250.75};
+        double capital = 0;
+        double taxa = 0;
+        double deposito = 0;
+        int meses = 0;
+
+        System.out.println("1. Capital inicial: ");
+        capital = scanner.nextDouble();
+
+        System.out.println("2. Taxa de juros mensal: ");
+        taxa =  scanner.nextDouble();
+
+        System.out.println("3. Depósito mensal: ");
+        deposito =  scanner.nextDouble();
+
+        System.out.println("4. Quantidade de meses: ");
+        meses = scanner.nextInt();
+
+        double[] saldos = new double[meses];
     }
 }
