@@ -8,6 +8,7 @@ public class SimuladorDeInvestimentosEjurosCompostos {
 
         double capital = 0;
         double juros = 0;
+
         double deposito = 0;
         int meses = 0;
         double saldoAtual = 0;
@@ -37,5 +38,23 @@ public class SimuladorDeInvestimentosEjurosCompostos {
             System.out.printf("Mês %d: R$ %.2f%n", i + 1, saldoAtual);
 
         }
+
+        System.out.println("\n--- HISTÓRICO DO INVESTIMENTO ---");
+
+        for (int i = 0; i < saldos.length; i++) {
+            System.out.printf("Mês %d: R$ %.2f%n", i + 1, saldos[i]);
+        }
+
+        double totalInvestido = 0;
+
+        totalInvestido = capital + (deposito * meses);
+        System.out.printf("Total Investido: R$ %.2f%n", totalInvestido);
+
+        double rendimento = saldoAtual - totalInvestido;
+
+        System.out.printf("Total de rendimento: %.2f%n", rendimento);
+
+        System.out.printf("Saldo final do invesrtimento: R$ %.2f%n", saldoAtual);
+
     }
 }
