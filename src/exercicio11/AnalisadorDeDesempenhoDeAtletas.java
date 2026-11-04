@@ -8,7 +8,6 @@ public class AnalisadorDeDesempenhoDeAtletas {
 
         Scanner scanner = new Scanner(System.in);
 
-
         String[] nomes = new String[10];
         double[] tempos = new double[10];
 
@@ -35,8 +34,31 @@ public class AnalisadorDeDesempenhoDeAtletas {
                 //- Nome do atleta.
                 //- Tempo que ele levou para completar a corrida, em segundos.
                 case 1:
-                    System.out.printf("Cadastre o atleta: ");
-                    scanner.next();
+                    if (quantidadeAtletas < 10){
+                        System.out.printf("==== CADASTRE O ATLETA ====");
+
+                        scanner.nextLine();
+
+                        System.out.printf("Digite o nome do atleta: ");
+                        nomes[quantidadeAtletas] = scanner.nextLine();
+
+                        do {
+                            System.out.print("Digite o tempo da corrida: ");
+                            tempos[quantidadeAtletas] = scanner.nextDouble();
+
+                            if (tempos[quantidadeAtletas] <= 0) {
+                                System.out.println("Tempo inválido! Digite novamente.");
+                            }
+
+                    } while (tempos[quantidadeAtletas] <= 0);
+
+                        quantidadeAtletas++;
+
+                        System.out.println("Atleta cadastrado com sucesso!");
+
+                    } else {
+                        System.out.println("Sem vagas disponíveis!");
+                    }
                     break;
 
                //2. Listar atletas
