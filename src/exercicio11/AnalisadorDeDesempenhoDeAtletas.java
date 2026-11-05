@@ -15,9 +15,8 @@ public class AnalisadorDeDesempenhoDeAtletas {
 
         int opcao;
 
-
-        while (opcao != 0){
-            System.out.printf("===== DESEMPENHO DOS ATLETAS =====\n" +
+        do {
+            System.out.println("===== DESEMPENHO DOS ATLETAS =====\n" +
                     "\n" +
                     "1 - Cadastrar atleta\n" +
                     "2 - Listar atletas\n" +
@@ -26,6 +25,8 @@ public class AnalisadorDeDesempenhoDeAtletas {
                     "5 - Pior desempenho\n" +
                     "6 - Atletas abaixo de 15 segundos\n" +
                     "0 - Sair");
+
+            opcao = scanner.nextInt();
 
             switch (opcao){
 
@@ -50,7 +51,7 @@ public class AnalisadorDeDesempenhoDeAtletas {
                                 System.out.println("Tempo inválido! Digite novamente.");
                             }
 
-                    } while (tempos[quantidadeAtletas] <= 0);
+                        } while (tempos[quantidadeAtletas] <= 0);
 
                         quantidadeAtletas++;
 
@@ -61,14 +62,21 @@ public class AnalisadorDeDesempenhoDeAtletas {
                     }
                     break;
 
-               //2. Listar atletas
-               //Mostrará todos os atletas cadastrados e seus respectivos tempos.
+                //2. Listar atletas
+                //Mostrará todos os atletas cadastrados e seus respectivos tempos.
                 case 2:
                     System.out.printf("===== ATLETAS CADASTRADOS =====");
-                    scanner.next();
+
+                    if (quantidadeAtletas == 0){
+                        System.out.println("Sem atletas cadastrados!");
+                    }else { for (int i = 0; i < quantidadeAtletas; i++){
+                        System.out.printf("Atleta: %s | Tempo: %.2f segundos%n",
+                                nomes[i], tempos[i]);
+                        }
+                    }
                     break;
 
-                    //3. Calcular média
+                //3. Calcular média
                 //Calculará a média dos tempos de todos os atletas.
                 case 3:
                     System.out.printf("Média do atleta: ");
@@ -92,7 +100,6 @@ public class AnalisadorDeDesempenhoDeAtletas {
                 case 0:
                     System.out.printf("Sair");
             }
-        }
-
+        }while (opcao != 0);
     }
 }
